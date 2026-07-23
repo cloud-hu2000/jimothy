@@ -13,13 +13,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jimothy Clicker – Play the Viral Raccoon Game Free",
-  description: "Play Jimothy Clicker free: tap the viral raccoon, earn Trash Points, unlock upgrades and return to the Trash Dimension.",
-  keywords: ["Jimothy Clicker", "viral raccoon game", "free clicker game", "raccoon clicker", "idle game"],
+  title: "Jimothy the Raccoon Meme Generator",
+  description: "Create, download, and share original Jimothy the Raccoon memes with five transparent raccoon templates.",
+  keywords: ["Jimothy the Raccoon", "Jimothy meme generator", "raccoon meme maker", "Jimothy memes"],
   openGraph: {
-    title: "Jimothy Clicker – Play the Viral Raccoon Game Free",
-    description: "Tap the viral raccoon, build a trash empire, and unlock the next dimension.",
+    title: "Jimothy the Raccoon Meme Generator",
+    description: "Give Jimothy a line. Download your meme as a PNG.",
     type: "website",
+    images: [{ url: "/og-meme-generator.png", width: 1200, height: 630, alt: "Jimothy the Raccoon Meme Generator" }],
   },
   icons: {
     icon: "/favicon-raccoon.png",
@@ -35,6 +36,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(s){s.dataset.zone='11376179',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))",
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
