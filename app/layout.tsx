@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://jimothy.click"),
   title: "Jimothy the Raccoon Meme Generator",
   description: "Create, download, and share original Jimothy the Raccoon memes with five transparent raccoon templates.",
   keywords: ["Jimothy the Raccoon", "Jimothy meme generator", "raccoon meme maker", "Jimothy memes"],

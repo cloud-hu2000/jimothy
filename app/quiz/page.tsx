@@ -4,7 +4,7 @@ import "./quiz.css";
 
 export const metadata: Metadata = {
   title: "Which Jimothy Are You? Take the Viral Raccoon Personality Quiz",
-  description: "Answer 7 chaotic questions and discover your true Jimothy form. Share or download your viral raccoon result card.",
+  description: "Answer 7 chaotic questions and discover your true Jimothy form. Share or download a result card made for the group chat.",
   keywords: ["Which Jimothy Are You", "Jimothy quiz", "raccoon personality quiz", "viral meme quiz"],
   openGraph: {
     title: "Which Jimothy Are You?",
