@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "jimothy-clicker",
+  "name": "jimothy-meme-generator",
   "main": "./worker/index.ts",
   "compatibility_date": "2026-05-15",
   "assets": {
