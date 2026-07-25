@@ -1,4 +1,4 @@
-export const siteUrl = "https://jimothy.click";
+export const siteUrl = "https://jimothy.meme";
 
 export type ResultSlug = "sleepy-jimothy" | "angel-jimothy" | "cool-jimothy" | "chaotic-jimothy" | "king-jimothy";
 export type JimothyResult = { slug: ResultSlug; name: string; eyebrow: string; keywords: string[]; image: string; tone: string; summary: string; shareLine: string; snack: string; catchphrase: string; description: string; seoDescription: string };
