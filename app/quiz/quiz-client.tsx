@@ -2,13 +2,189 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { results, type ResultSlug } from "../../lib/jimothy-results";
-const questions: { question: string; options: { text: string; result: ResultSlug }[] }[] = [
-  { question: "You find an unattended trash can. What do you do?", options: [{ text: "Take a nap beside it", result: "sleepy-jimothy" }, { text: "Inspect it for snacks", result: "chaotic-jimothy" }, { text: "Knock it over immediately", result: "chaotic-jimothy" }, { text: "Pose for a photo first", result: "king-jimothy" }] },
-  { question: "What is your ideal Friday night?", options: [{ text: "Sleeping for 14 hours", result: "sleepy-jimothy" }, { text: "Helping a friend", result: "angel-jimothy" }, { text: "Showing up mysteriously in sunglasses", result: "cool-jimothy" }, { text: "Making a decision I’ll regret tomorrow", result: "chaotic-jimothy" }] },
-  { question: "Someone says you look unusual. You:", options: [{ text: "Go back to sleep", result: "sleepy-jimothy" }, { text: "Thank them politely", result: "angel-jimothy" }, { text: "Put on sunglasses", result: "cool-jimothy" }, { text: "Become an internet celebrity", result: "king-jimothy" }] },
-  { question: "Choose your survival item.", options: [{ text: "A pillow", result: "sleepy-jimothy" }, { text: "A glowing halo", result: "angel-jimothy" }, { text: "Sunglasses", result: "cool-jimothy" }, { text: "A tiny crown", result: "king-jimothy" }] },
-  { question: "Your friends describe you as:", options: [{ text: "Permanently tired", result: "sleepy-jimothy" }, { text: "Suspiciously wholesome", result: "angel-jimothy" }, { text: "Effortlessly cool", result: "cool-jimothy" }, { text: "A public safety concern", result: "chaotic-jimothy" }] },
-  { question: "What would make you go viral?", options: [{ text: "Sleeping in a strange place", result: "sleepy-jimothy" }, { text: "Saving someone", result: "angel-jimothy" }, { text: "Looking iconic without trying", result: "cool-jimothy" }, { text: "Accidentally destroying something", result: "chaotic-jimothy" }] },
-  { question: "Complete the sentence: Hot Jimothy Summer means…", options: [{ text: "Canceling plans and resting", result: "sleepy-jimothy" }, { text: "Spreading kindness", result: "angel-jimothy" }, { text: "Looking cool at all times", result: "cool-jimothy" }, { text: "Embracing absolute chaos", result: "chaotic-jimothy" }] },
+const questions: {
+  question: string;
+  options: { text: string; result: ResultSlug }[];
+}[] = [
+  {
+    question: "You find an unattended trash can. What do you do?",
+    options: [
+      { text: "Take a nap beside it", result: "sleepy-jimothy" },
+      { text: "Inspect it for snacks", result: "chaotic-jimothy" },
+      { text: "Knock it over immediately", result: "chaotic-jimothy" },
+      { text: "Pose for a photo first", result: "king-jimothy" },
+    ],
+  },
+  {
+    question: "What is your ideal Friday night?",
+    options: [
+      { text: "Sleeping for 14 hours", result: "sleepy-jimothy" },
+      { text: "Helping a friend", result: "angel-jimothy" },
+      { text: "Showing up mysteriously in sunglasses", result: "cool-jimothy" },
+      {
+        text: "Making a decision I’ll regret tomorrow",
+        result: "chaotic-jimothy",
+      },
+    ],
+  },
+  {
+    question: "Someone says you look unusual. You:",
+    options: [
+      { text: "Go back to sleep", result: "sleepy-jimothy" },
+      { text: "Thank them politely", result: "angel-jimothy" },
+      { text: "Put on sunglasses", result: "cool-jimothy" },
+      { text: "Become an internet celebrity", result: "king-jimothy" },
+    ],
+  },
+  {
+    question: "Choose your survival item.",
+    options: [
+      { text: "A pillow", result: "sleepy-jimothy" },
+      { text: "A glowing halo", result: "angel-jimothy" },
+      { text: "Sunglasses", result: "cool-jimothy" },
+      { text: "A tiny crown", result: "king-jimothy" },
+    ],
+  },
+  {
+    question: "Your friends describe you as:",
+    options: [
+      { text: "Permanently tired", result: "sleepy-jimothy" },
+      { text: "Suspiciously wholesome", result: "angel-jimothy" },
+      { text: "Effortlessly cool", result: "cool-jimothy" },
+      { text: "A public safety concern", result: "chaotic-jimothy" },
+    ],
+  },
+  {
+    question: "What would make you go viral?",
+    options: [
+      { text: "Sleeping in a strange place", result: "sleepy-jimothy" },
+      { text: "Saving someone", result: "angel-jimothy" },
+      { text: "Looking iconic without trying", result: "cool-jimothy" },
+      { text: "Accidentally destroying something", result: "chaotic-jimothy" },
+    ],
+  },
+  {
+    question: "Complete the sentence: Hot Jimothy Summer means…",
+    options: [
+      { text: "Canceling plans and resting", result: "sleepy-jimothy" },
+      { text: "Spreading kindness", result: "angel-jimothy" },
+      { text: "Looking cool at all times", result: "cool-jimothy" },
+      { text: "Embracing absolute chaos", result: "chaotic-jimothy" },
+    ],
+  },
 ];
-export default function QuizClient() { const router = useRouter(); const [answers, setAnswers] = useState<ResultSlug[]>([]); const [started, setStarted] = useState(false); const choose = (choice: ResultSlug) => { const next = [...answers, choice]; if (next.length === questions.length) { const score = next.reduce((count, id) => ({ ...count, [id]: count[id] + 1 }), Object.fromEntries(Object.keys(results).map((id) => [id, 0])) as Record<ResultSlug, number>); const winner = (Object.keys(score) as ResultSlug[]).reduce((best, id) => score[id] > score[best] ? id : best, next[0]); router.push(`/results/${winner}`); return; } setAnswers(next); }; return <main className="quiz-page"><nav className="quiz-nav"><a className="quiz-brand" href="/"><span>JIMOTHY</span> WORLD</a><div><a href="/">MEME MAKER</a><a href="#about">ABOUT THE QUIZ</a></div></nav>{!started && <section className="quiz-hero"><div className="quiz-orbit orbit-one" /><div className="quiz-orbit orbit-two" /><p className="eyebrow">THE SHAREABLE RACCOON PERSONALITY QUIZ</p><h1>Which Jimothy<br /><i>Are You?</i></h1><p>Answer 7 chaotic questions. Get the result card your group chat deserves.</p><button className="primary-quiz" onClick={() => setStarted(true)}>Find My Jimothy <span>→</span></button><small>7 questions · 2 minutes · maximum nonsense</small><div className="hero-characters"><img src="/assets/jimothy-sleepy-transparent.png" alt="Sleepy Jimothy" /><img src="/assets/jimothy-saint-transparent.png" alt="Angel Jimothy" /><img src="/assets/jimothy-summer-transparent.png" alt="Cool Jimothy" /></div></section>}{started && <section className="question-shell"><div className="quiz-progress"><span>QUESTION {answers.length + 1} / 7</span><div><i style={{ width: `${answers.length / questions.length * 100}%` }} /></div><b>{Math.round(answers.length / questions.length * 100)}%</b></div><p className="eyebrow">THIS IS SCIENCE (SORT OF)</p><h1>{questions[answers.length].question}</h1><div className="answers">{questions[answers.length].options.map((option, index) => <button key={option.text} onClick={() => choose(option.result)}><span>0{index + 1}</span>{option.text}<i>→</i></button>)}</div>{answers.length > 0 && <button className="back-answer" onClick={() => setAnswers((items) => items.slice(0, -1))}>← Change previous answer</button>}</section>}<footer className="quiz-footer"><a className="quiz-brand" href="/"><span>JIMOTHY</span> WORLD</a><p>A very serious raccoon institution. Please admire wildlife from a respectful distance.</p><a href="/">Meme Maker →</a></footer></main>; }
+export default function QuizClient() {
+  const router = useRouter();
+  const [answers, setAnswers] = useState<ResultSlug[]>([]);
+  const [started, setStarted] = useState(false);
+  const choose = (choice: ResultSlug) => {
+    const next = [...answers, choice];
+    if (next.length === questions.length) {
+      const score = next.reduce(
+        (count, id) => ({ ...count, [id]: count[id] + 1 }),
+        Object.fromEntries(Object.keys(results).map((id) => [id, 0])) as Record<
+          ResultSlug,
+          number
+        >,
+      );
+      const winner = (Object.keys(score) as ResultSlug[]).reduce(
+        (best, id) => (score[id] > score[best] ? id : best),
+        next[0],
+      );
+      router.push(`/results/${winner}`);
+      return;
+    }
+    setAnswers(next);
+  };
+  return (
+    <main className="quiz-page">
+      <nav className="quiz-nav">
+        <a className="quiz-brand" href="/">
+          <span>JIMOTHY</span> WORLD
+        </a>
+        <div>
+          <a href="/">MEME MAKER</a>
+          <a href="#about">ABOUT THE QUIZ</a>
+        </div>
+      </nav>
+      {!started && (
+        <section className="quiz-hero">
+          <div className="quiz-orbit orbit-one" />
+          <div className="quiz-orbit orbit-two" />
+          <p className="eyebrow">THE SHAREABLE RACCOON PERSONALITY QUIZ</p>
+          <h1>
+            Which Jimothy
+            <br />
+            <i>Are You?</i>
+          </h1>
+          <p>
+            Answer 7 chaotic questions. Get the result card your group chat
+            deserves.
+          </p>
+          <button className="primary-quiz" onClick={() => setStarted(true)}>
+            Find My Jimothy <span>→</span>
+          </button>
+          <small>7 questions · 2 minutes · maximum nonsense</small>
+          <div className="hero-characters">
+            <img
+              src="/assets/jimothy-sleepy-transparent.png"
+              alt="Sleepy Jimothy"
+            />
+            <img
+              src="/assets/jimothy-saint-transparent.png"
+              alt="Angel Jimothy"
+            />
+            <img
+              src="/assets/jimothy-summer-transparent.png"
+              alt="Cool Jimothy"
+            />
+          </div>
+        </section>
+      )}
+      {started && (
+        <section className="question-shell">
+          <div className="quiz-progress">
+            <span>QUESTION {answers.length + 1} / 7</span>
+            <div>
+              <i
+                style={{
+                  width: `${(answers.length / questions.length) * 100}%`,
+                }}
+              />
+            </div>
+            <b>{Math.round((answers.length / questions.length) * 100)}%</b>
+          </div>
+          <p className="eyebrow">THIS IS SCIENCE (SORT OF)</p>
+          <h1>{questions[answers.length].question}</h1>
+          <div className="answers">
+            {questions[answers.length].options.map((option, index) => (
+              <button key={option.text} onClick={() => choose(option.result)}>
+                <span>0{index + 1}</span>
+                {option.text}
+                <i>→</i>
+              </button>
+            ))}
+          </div>
+          {answers.length > 0 && (
+            <button
+              className="back-answer"
+              onClick={() => setAnswers((items) => items.slice(0, -1))}
+            >
+              ← Change previous answer
+            </button>
+          )}
+        </section>
+      )}
+      <footer className="quiz-footer">
+        <a className="quiz-brand" href="/">
+          <span>JIMOTHY</span> WORLD
+        </a>
+        <p>
+          A very serious raccoon institution. Please admire wildlife from a
+          respectful distance.
+        </p>
+        <a href="/">Meme Maker →</a>
+      </footer>
+    </main>
+  );
+}

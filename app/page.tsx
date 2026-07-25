@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import JimothyWorldNav from "./jimothy-world-nav";
 
 type Template = {
   id: string;
@@ -149,9 +150,11 @@ export default function Home() {
     <main>
       <nav className="topbar">
         <a className="brand" href="#maker" aria-label="Jimothy the Raccoon Meme Generator home"><span>JIMOTHY</span><small>THE RACCOON</small></a>
-        <div className="nav-links"><a href="#templates">TEMPLATES</a><a href="#how">HOW IT WORKS</a><a href="/quiz">WHICH JIMOTHY?</a></div>
+        <div className="nav-links"><a href="#templates">TEMPLATES</a><a href="#how">HOW IT WORKS</a><a href="/who-is-jimothy">JIMOTHY LORE</a><a href="/quiz">WHICH JIMOTHY?</a></div>
         <button className="share-link" onClick={copyShareLink}>COPY LINK</button>
       </nav>
+
+      <JimothyWorldNav active="meme" />
 
       <section className="hero" id="maker">
         <div className="hero-copy">

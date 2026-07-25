@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: "Jimothy the Raccoon Meme Generator",
     description: "Give Jimothy a line. Download your meme as a PNG.",
     type: "website",
-    images: [{ url: "/og-meme-generator.png", width: 1200, height: 630, alt: "Jimothy the Raccoon Meme Generator" }],
+    images: [{ url: "/og-world-v2.png", width: 1200, height: 630, alt: "Jimothy World: memes, quizzes, and clicker" }],
   },
   icons: {
     icon: "/favicon-raccoon.png",

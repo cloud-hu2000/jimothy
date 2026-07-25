@@ -1,0 +1,81 @@
+{
+  "_framework-WKgZlWQq.js": {
+    "file": "assets/framework-WKgZlWQq.js",
+    "name": "framework",
+    "imports": [
+      "_rolldown-runtime-S-ySWqyJ.js"
+    ]
+  },
+  "_readonly-url-search-params-dZt5LReY.js": {
+    "file": "assets/readonly-url-search-params-dZt5LReY.js",
+    "name": "readonly-url-search-params",
+    "imports": [
+      "_rolldown-runtime-S-ySWqyJ.js",
+      "_framework-WKgZlWQq.js"
+    ]
+  },
+  "_rolldown-runtime-S-ySWqyJ.js": {
+    "file": "assets/rolldown-runtime-S-ySWqyJ.js",
+    "name": "rolldown-runtime"
+  },
+  "app/page.tsx": {
+    "file": "assets/page-Ct8vXv8T.js",
+    "name": "page",
+    "src": "app/page.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-S-ySWqyJ.js",
+      "_framework-WKgZlWQq.js"
+    ]
+  },
+  "app/quiz/quiz-client.tsx": {
+    "file": "assets/quiz-client-Cc8dZfyu.js",
+    "name": "quiz-client",
+    "src": "app/quiz/quiz-client.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-S-ySWqyJ.js",
+      "_framework-WKgZlWQq.js",
+      "_readonly-url-search-params-dZt5LReY.js"
+    ]
+  },
+  "app/results/[slug]/result-client.tsx": {
+    "file": "assets/result-client-BTyAlTXi.js",
+    "name": "result-client",
+    "src": "app/results/[slug]/result-client.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-S-ySWqyJ.js",
+      "_framework-WKgZlWQq.js"
+    ]
+  },
+  "node_modules/vinext/dist/shims/layout-segment-context.js": {
+    "file": "assets/layout-segment-context-C9ASj8ig.js",
+    "name": "layout-segment-context",
+    "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-S-ySWqyJ.js",
+      "virtual:vinext-app-browser-entry",
+      "_framework-WKgZlWQq.js"
+    ]
+  },
+  "virtual:vinext-app-browser-entry": {
+    "file": "assets/index-CI-CVJp7.js",
+    "name": "index",
+    "src": "virtual:vinext-app-browser-entry",
+    "isEntry": true,
+    "imports": [
+      "_rolldown-runtime-S-ySWqyJ.js",
+      "_framework-WKgZlWQq.js",
+      "_readonly-url-search-params-dZt5LReY.js"
+    ],
+    "dynamicImports": [
+      "node_modules/vinext/dist/shims/layout-segment-context.js",
+      "app/quiz/quiz-client.tsx",
+      "virtual:vinext-app-browser-entry",
+      "app/page.tsx",
+      "app/results/[slug]/result-client.tsx"
+    ]
+  }
+}

@@ -9,7 +9,7 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "deploy:cloudflare": "npm run build && wrangler deploy",
-    "start": "vinext start",
+    "start": "npm run build && wrangler dev --config dist/server/wrangler.json --port 3000 --persist-to .wrangler/local-preview",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate"
