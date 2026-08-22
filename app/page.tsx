@@ -1,7 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import { schemaGraph, webApplicationSchema, webPageSchema } from "../lib/seo";
 import JimothyWorldNav from "./jimothy-world-nav";
+import JsonLd from "./json-ld";
 
 type Template = {
   id: string;
@@ -147,7 +149,12 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <>
+      <JsonLd schema={schemaGraph(
+        webPageSchema({ path: "/", name: "Jimothy the Raccoon Meme Generator", description: "Create, download, and share original Jimothy the Raccoon memes with five transparent raccoon templates." }),
+        webApplicationSchema({ path: "/", name: "Jimothy the Raccoon Meme Generator", description: "Create and download Jimothy raccoon memes in your browser.", category: "MultimediaApplication", browserRequirements: "Requires JavaScript and HTML5 canvas support." }),
+      )} />
+      <main>
       <nav className="topbar">
         <a className="brand" href="#maker" aria-label="Jimothy the Raccoon Meme Generator home"><span>JIMOTHY</span><small>THE RACCOON</small></a>
         <div className="nav-links"><a href="#templates">TEMPLATES</a><a href="#how">HOW IT WORKS</a><a href="/who-is-jimothy">JIMOTHY LORE</a><a href="/quiz">WHICH JIMOTHY?</a></div>
@@ -185,7 +192,8 @@ export default function Home() {
 
       <section className="how-to"><p className="eyebrow">NO ACCOUNT. NO FUSS.</p><h2>Three steps to trash greatness.</h2><div className="steps"><article><span>01</span><h3>Pick your Jimothy</h3><p>Choose the version that matches the energy. Crowned, formal, cool, or fully party-ready.</p></article><article><span>02</span><h3>Caption the moment</h3><p>Use your own words or start with a classic Jimothy preset.</p></article><article><span>03</span><h3>Post it everywhere</h3><p>Download a crisp PNG or copy a link that preserves your exact masterpiece.</p></article></div></section>
 
-      <footer><a className="brand" href="#maker"><span>JIMOTHY</span><small>THE RACCOON</small></a><p>A fan-made meme tool. Please admire wildlife from a respectful distance.</p><a href="/quiz">TAKE THE JIMOTHY QUIZ →</a></footer>
-    </main>
+      <footer><a className="brand" href="#maker"><span>JIMOTHY</span><small>THE RACCOON</small></a><p>A fan-made meme tool. Please admire wildlife from a respectful distance.</p><a href="/about-jimothy-world">ABOUT THIS GUIDE</a><a href="/quiz">TAKE THE JIMOTHY QUIZ →</a></footer>
+      </main>
+    </>
   );
 }

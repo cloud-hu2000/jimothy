@@ -1,11 +1,14 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "jimothy-meme-generator",
+  "name": "jimothy-clicker",
   "main": "./worker/index.ts",
   "compatibility_date": "2026-05-15",
   "assets": {
     "directory": "./dist/client",
     "binding": "ASSETS",
     "not_found_handling": "none"
-  }
+  },
+  "routes": [
+    { "pattern": "jimothy.meme/*", "zone_name": "jimothy.meme" }
+  ]
 }

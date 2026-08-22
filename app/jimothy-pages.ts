@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "../lib/seo";
 
 export type JimothyPage = {
   slug: string;
@@ -132,6 +133,32 @@ export const jimothyPages: JimothyPage[] = [
       { src: "/assets/jimothy-saint.png", alt: "Original illustrated Jimothy", caption: "Community photos deserve careful context.", tone: "lime" },
     ],
   },
+  {
+    slug: "about-jimothy-world",
+    title: "About Jimothy World: A Fan-Made Guide to the Raccoon Meme",
+    description: "Jimothy World is a fan-made meme tool and guide that separates public lore, visible observations, and unconfirmed claims about Jimothy the raccoon.",
+    eyebrow: "ABOUT THIS GUIDE",
+    answer: "Jimothy World is an unofficial meme generator, quiz, game, and fan-made guide. It makes the lore easy to explore while being clear about what public posts suggest, what cannot be verified online, and why a wild animal deserves distance.",
+    sections: [
+      { heading: "What Jimothy World is", paragraphs: ["This site is a playful home for Jimothy lore: a meme generator, a personality quiz, a clicker game, and short guides for the questions people ask when they first see the unusually round raccoon. It is not an official account, wildlife organization, veterinary practice, or source of first-hand medical information.", "The useful version of fan lore is easy to read without pretending to know more than the internet can confirm. That is why the guides distinguish a visible feature, a community claim, and a confirmed fact instead of blending them together."] },
+      { heading: "How we handle uncertain claims", paragraphs: ["A viral video can show an animal's appearance, but it cannot replace a veterinary examination or verify every reposted detail. When discussing Jimothy's body shape, older photos, or neighborhood sightings, this site uses careful terms such as believed, suspected, community-sourced, and publicly unconfirmed when certainty is not available.", "If a wild animal appears injured or distressed, the responsible next step is to contact a licensed local wildlife rehabilitator or the relevant animal-control authority. Do not approach, feed, handle, or chase wildlife for a better photo."] },
+    ],
+    timeline: [
+      { date: "This site", detail: "A fan-made collection of Jimothy tools, games, and carefully worded lore guides." },
+      { date: "Content standard", detail: "Visible observations and online claims are kept separate from medical or identity conclusions that cannot be confirmed here." },
+      { date: "Wildlife first", detail: "The site encourages viewers to enjoy the meme without disturbing the animal behind it." },
+    ],
+    faqs: [
+      { question: "Is Jimothy World an official source?", answer: "No. It is an independent, fan-made guide and meme project." },
+      { question: "Does this site diagnose Jimothy?", answer: "No. It describes public discussion cautiously and does not replace a professional wildlife assessment." },
+      { question: "Can I use the meme tools?", answer: "Yes. The meme generator, quiz, and clicker are free browser experiences made for respectful fan creativity." },
+    ],
+    images: [
+      { src: "/assets/jimothy-raccoon.png", alt: "Original illustrated Jimothy raccoon", caption: "A real animal, and a rapidly growing pile of lore.", tone: "lime" },
+      { src: "/assets/jimothy-bowtie.png", alt: "Original illustrated formal Jimothy", caption: "Fan-made fun should keep its facts in order.", tone: "coral" },
+      { src: "/assets/jimothy-saint.png", alt: "Original illustrated saint Jimothy", caption: "Respect wildlife; enjoy the bit.", tone: "cream" },
+    ],
+  },
 ];
 
 export function pageForSlug(slug: string) {
@@ -139,10 +166,11 @@ export function pageForSlug(slug: string) {
 }
 
 export function metadataForPage(page: JimothyPage): Metadata {
-  return {
+  return pageMetadata({
+    path: `/${page.slug}`,
     title: page.title,
     description: page.description,
-    alternates: { canonical: `/${page.slug}` },
-    openGraph: { title: page.title, description: page.description, type: "article", images: [{ url: "/og.png", width: 1200, height: 630, alt: page.title }] },
-  };
+    image: { url: "/og.png", alt: page.title },
+    ogType: "article",
+  });
 }
